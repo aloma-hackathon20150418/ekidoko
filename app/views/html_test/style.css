@@ -41,7 +41,8 @@ a{
 }
 
 #wrapper {
-	background:
+	background: #fff url("img/bg.jpg");
+	height: 500px;
 }
 /*【角丸】
  　角丸にしたいコンテンツに
@@ -99,13 +100,8 @@ nav li img{
 
 /*-- サイト名やタイトル --*/
 h1{
-	margin:0 .2em;
-	padding-bottom:.2em;
-	border-bottom:dotted 1px #17A4E5;
-	font-size:30px;
-	font-weight:normal;
-	line-height:1;
-	position:relative;
+	width: 30%;
+	margin: 0 auto;
 }
 
 h1:first-letter{
@@ -198,6 +194,12 @@ footer a{
 }
 
 /*-- フッタメニュー --*/
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 100;
+}
 .foot_nav{
 	padding:.8em .5em .5em;
 	clear:both;

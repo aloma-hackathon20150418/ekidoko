@@ -3,7 +3,7 @@ function initialize() {
   var stationPos = new google.maps.LatLng(35.681622, 139.766073); /*駅*/
   
   var myOptions = {
-    zoom: 18, /*拡大比率*/
+    zoom: 15, /*拡大比率*/
     center: currentPos, /*表示枠内の中心点*/
     mapTypeControlOptions: { mapTypeIds: ['sample', google.maps.MapTypeId.ROADMAP] }/*表示タイプの指定*/
   };
