@@ -1,23 +1,58 @@
 function initialize() {
-  var latlng = new google.maps.LatLng(35.710333,139.777148);
+  var currentPos = new google.maps.LatLng(35.681735, 139.762651); /*現在地*/
+  var stationPos = new google.maps.LatLng(35.681622, 139.766073); /*駅*/
+  
   var myOptions = {
     zoom: 18, /*拡大比率*/
-    center: latlng, /*表示枠内の中心点*/
+    center: currentPos, /*表示枠内の中心点*/
     mapTypeControlOptions: { mapTypeIds: ['sample', google.maps.MapTypeId.ROADMAP] }/*表示タイプの指定*/
   };
   var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-  /*アイコン設定*/
-  var icon = new google.maps.MarkerImage('img/ico.png',
+  
+  /*アイコン設定(今ココ)*/
+  var iconImakoko = new google.maps.MarkerImage('img/ico.png',
     new google.maps.Size(55,72), /*アイコンサイズ設定*/
     new google.maps.Point(0,0) /*アイコン位置設定*/
     );
-  var markerOptions = {
-    position: latlng,
+  
+  /*アイコン設定(駅ココ)*/
+  var iconEkikoko = new google.maps.MarkerImage('img/ico01.png',
+    new google.maps.Size(55,72), /*アイコンサイズ設定*/
+    new google.maps.Point(0,0) /*アイコン位置設定*/
+    );
+  
+  /*今ココ表示設定*/
+    var markerOptions = {
+    position: currentPos,
     map: map,
-    icon: icon,
-    title: ' 現在地　'
+    icon: iconImakoko,
+    title: ' 現在地'
   };
-  var marker = new google.maps.Marker(markerOptions);
+  
+  var markerImakoko = new google.maps.Marker(markerOptions);
+  
+  /*駅ココ表示設定*/
+    var markerOptions = {
+    position: stationPos,
+    map: map,
+    icon: iconEkikoko,
+    title: ' 駅'
+  };
+  var markerEkikoko = new google.maps.Marker(markerOptions);
+  
+  /*範囲描画*/
+  new google.maps.Circle({
+  center: currentPos,       // 中心点(google.maps.LatLng)
+  fillColor: '#BAE3F9',   // 塗りつぶし色
+  fillOpacity: 0.3,       // 塗りつぶし透過度（0: 透明 ⇔ 1:不透明）
+  map: map,             // 表示させる地図（google.maps.Map）
+  radius: 500,          // 半径（ｍ）
+  strokeColor: '#7ECEF4', // 外周色 
+  strokeOpacity: 1,       // 外周透過度（0: 透明 ⇔ 1:不透明）
+  strokeWeight: 1         // 外周太さ（ピクセル）
+  });
+  /*範囲描画ここまで*/
+  
   /*取得スタイルの貼り付け*/
   var styleOptions = [
   {
@@ -35,12 +70,3 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-//function initialize() {
-  //var latlng = new google.maps.LatLng(35.710333, 139.777131);
-  //var myOptions = {
-    //zoom: 18, /*拡大比率*/
-    //center: latlng, /*表示枠内の中心点*/
-    //mapTypeId: google.maps.MapTypeId.ROADMAP/*表示タイプの指定*/
-  /*};
-  var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-}*/
